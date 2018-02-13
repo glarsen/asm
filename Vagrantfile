@@ -24,9 +24,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Lasciel VM Host
   config.vm.define :asmdev do |node|
-    node.vm.box = "boxcutter/ubuntu1604"
+    node.vm.box = "bento/ubuntu-16.04"
     node.vm.hostname = "asmdev"
-    node.vm.provision :shell, path: "provision.sh"
+    node.vm.provision :shell, path: "provision.sh", privileged: false
   end
 end
 

@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
-apt-mark hold grub2-common
-apt-mark hold grub-pc
-apt-mark hold grub-common
+# Prevent grub updates to allow for initial automated update
+echo "[*] Temporarily holding back grub package updates..."
+sudo apt-mark hold grub2-common
+sudo apt-mark hold grub-pc
+sudo apt-mark hold grub-common
 
 # Upgrade the System Packages
 echo "[*] Updating system packages..."
-apt-get update
-apt-get upgrade -y
+sudo apt-get update
+sudo apt-get upgrade -y
 
 # Set environment variables
 echo "[*] Setting bootstrap session environment variables..."
@@ -33,6 +35,10 @@ cd /tmp/dotfiles && \
 # Customize
 echo "[*] Installing misc utilities..."
 sudo apt install -y xtrace
+
+# Remove the holds on Grub
+echo "[*] Removing hold on grub packages..."
+sudo apt-mark unhold grub-pc grub-common grub2-common
 
 # Provisioning complete
 echo "[*] Provisioning completed successfully!"
