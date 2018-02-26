@@ -18,13 +18,13 @@ export SDIR=/vagrant
 
 # Install essentials
 echo "[*] Installing essential packages..."
-sudo apt install -y git
+sudo apt-get install -y git
 
 # Kickstart
 echo "[*] Kickstarting..."
 git clone --depth 1 https://github.com/glarsen/kickstart.git /tmp/kickstart && \
 cd /tmp/kickstart && \
-./kick.sh ubuntu-xenial x86-c python rust
+./kick.sh ubuntu-xenial build python rust x86-c
 
 # Dotfiles
 echo "[*] Installing personalized dotfiles..."
@@ -34,7 +34,7 @@ cd /tmp/dotfiles && \
 
 # Customize
 echo "[*] Installing misc utilities..."
-sudo apt install -y xtrace
+sudo apt-get install -y xtrace
 
 # Remove the holds on Grub
 echo "[*] Removing hold on grub packages..."

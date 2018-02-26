@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.cpus = "2"
   end
 
-  # Lasciel VM Host
+  # ASMDev VM Host
   config.vm.define :asmdev do |node|
     node.vm.box = "bento/ubuntu-16.04"
     node.vm.hostname = "asmdev"
